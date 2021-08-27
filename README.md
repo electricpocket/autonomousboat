@@ -1,6 +1,8 @@
-# iOS remote for Autohelm 800
+# iOS remote for Navico TP5000
 
-This is a hobby project on how to make an iOS remote control for the Autohelm 800 autopilot.
+This is a hobby project on how to make an iOS remote control for the Navico TP5000 autopilot
+based on https://github.com/larsjessen/autopilot project.
+
 
 <img src="media/app_and_autohelm800.JPG" alt="App and Autohelm 800" width="500"/>
 
@@ -8,7 +10,7 @@ This is a hobby project on how to make an iOS remote control for the Autohelm 80
 
 ## Electronics
 
-My initial idea was to use the remote control port that is located underneath the Autohelm 800, but I had no luck decoding the protocol used. I tried both listening for Serial and I2C, but I suspect that it is some proprietary communication protocol by Raymarine, and of course there is no documentation on this.
+Attempts to talk to the TP5000 over NMEA with wind data ( WMV) failed.
 
 So instead I went for the other obvious (and less elegant) solution - simulating button presses with relays.
 
@@ -66,7 +68,5 @@ I used the Arduino IDE 1.6.5 for the project (not that it should matter which ve
 
 ## iOS app
 
-I wanted to learn a bit of Swift so the example code from Blueduino site was not very helpful to me.
-
-Instead I based the code largely on [this example](https://www.raywenderlich.com/85900/arduino-tutorial-integrating-bluetooth-le-ios-swift) from Ray Wenderlich.
+based the code largely on [this example](https://www.raywenderlich.com/85900/arduino-tutorial-integrating-bluetooth-le-ios-swift) from Ray Wenderlich.
 # autonomousboat
