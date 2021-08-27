@@ -20,18 +20,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="926" height="428"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XUc-zp-bTM">
-                                <rect key="frame" x="90" y="286" width="120" height="119"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kMF-K5-CWf">
+                                <rect key="frame" x="417" y="287" width="120" height="119"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <state key="normal" title="P" backgroundImage="RedArrow">
-                                    <color key="titleShadowColor" systemColor="systemGray2Color"/>
+                                <state key="normal" title="SET AUTO" backgroundImage="RedOval">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="plusOnePressed:" destination="BYZ-38-t0r" eventType="touchDown" id="COx-vN-7PQ"/>
+                                    <action selector="autoPressed:" destination="BYZ-38-t0r" eventType="touchDown" id="CpX-3C-Vn3"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a10-34-pLq">
-                                <rect key="frame" x="730" y="280" width="120" height="119"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Not connected" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Rl-7u-VEr">
+                                <rect key="frame" x="403" y="53" width="114" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="3Mj-uh-KgK">
+                                <rect key="frame" x="99" y="57" width="14" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Status_red" translatesAutoresizingMaskIntoConstraints="NO" id="5hv-ax-nRN">
+                                <rect key="frame" x="413" y="132" width="128" height="119"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a10-34-pLq">
+                                <rect key="frame" x="785" y="285" width="120" height="119"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <state key="normal" title="S" backgroundImage="GreenArrow">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -41,76 +58,25 @@
                                     <action selector="minusOnePressed:" destination="BYZ-38-t0r" eventType="touchDown" id="m3v-Fr-hDg"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kMF-K5-CWf">
-                                <rect key="frame" x="417" y="287" width="120" height="119"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XUc-zp-bTM">
+                                <rect key="frame" x="31" y="285" width="120" height="119"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <state key="normal" title="SET AUTO" backgroundImage="RedOval">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="P" backgroundImage="RedArrow">
+                                    <color key="titleShadowColor" systemColor="systemGray2Color"/>
                                 </state>
                                 <connections>
-                                    <action selector="autoPressed:" destination="BYZ-38-t0r" eventType="touchDown" id="CpX-3C-Vn3"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JIT-UW-ZPG">
-                                <rect key="frame" x="730" y="112" width="120" height="119"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <state key="normal" title="-10" backgroundImage="GreyOval">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="minusTenPressedWithSender:" destination="BYZ-38-t0r" eventType="touchDown" id="4Pp-0H-WCz"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Not connected" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Rl-7u-VEr">
-                                <rect key="frame" x="420" y="53" width="114" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Status_red" translatesAutoresizingMaskIntoConstraints="NO" id="5hv-ax-nRN">
-                                <rect key="frame" x="413" y="112" width="128" height="119"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="3Mj-uh-KgK">
-                                <rect key="frame" x="218" y="112" width="14" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </activityIndicatorView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AaH-HG-xZf">
-                                <rect key="frame" x="90" y="111" width="120" height="119"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <state key="normal" title="+10" backgroundImage="GreyOval">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="plusTenPressedWithSender:" destination="BYZ-38-t0r" eventType="touchDown" id="7ka-u4-vsB"/>
+                                    <action selector="plusOnePressed:" destination="BYZ-38-t0r" eventType="touchDown" id="COx-vN-7PQ"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="XUc-zp-bTM" secondAttribute="bottom" constant="30" id="AcR-xt-hze"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="a10-34-pLq" secondAttribute="trailing" constant="20" id="COp-OV-mt3"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="a10-34-pLq" secondAttribute="bottom" constant="30" id="FKK-mm-jhv"/>
-                            <constraint firstItem="AaH-HG-xZf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="Fug-1f-gJO"/>
-                            <constraint firstItem="8Rl-7u-VEr" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="HYw-L6-sDd"/>
-                            <constraint firstItem="a10-34-pLq" firstAttribute="top" secondItem="JIT-UW-ZPG" secondAttribute="bottom" constant="30" id="IqA-Bd-9y4"/>
-                            <constraint firstItem="AaH-HG-xZf" firstAttribute="top" secondItem="kMF-K5-CWf" secondAttribute="bottom" constant="30" id="S4H-cv-g70"/>
-                            <constraint firstItem="XUc-zp-bTM" firstAttribute="top" secondItem="AaH-HG-xZf" secondAttribute="bottom" constant="30" id="gmF-NN-okJ"/>
-                            <constraint firstItem="XUc-zp-bTM" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="hyt-YA-d0C"/>
-                            <constraint firstItem="kMF-K5-CWf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="mFD-ag-qDH"/>
-                            <constraint firstItem="8Rl-7u-VEr" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="18" id="oyV-Ob-EUV"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="JIT-UW-ZPG" secondAttribute="trailing" constant="20" id="sP7-3o-xCH"/>
-                        </constraints>
                     </view>
                     <connections>
                         <outlet property="auto" destination="kMF-K5-CWf" id="QSg-C4-LlM"/>
                         <outlet property="connectionStatus" destination="8Rl-7u-VEr" id="AZ9-jl-Sda"/>
                         <outlet property="minusOne" destination="a10-34-pLq" id="rph-WL-Qdu"/>
-                        <outlet property="minusTen" destination="JIT-UW-ZPG" id="QyH-Ky-gpw"/>
                         <outlet property="plusOne" destination="XUc-zp-bTM" id="uqP-fz-0Ls"/>
-                        <outlet property="plusTen" destination="AaH-HG-xZf" id="Nvg-Ql-qWd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -120,7 +86,6 @@
     </scenes>
     <resources>
         <image name="GreenArrow" width="120" height="119"/>
-        <image name="GreyOval" width="120" height="119"/>
         <image name="RedArrow" width="119" height="120"/>
         <image name="RedOval" width="120" height="119"/>
         <image name="Status_red" width="44" height="44"/>
