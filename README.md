@@ -1,7 +1,10 @@
 # iOS remote for Navico TP5000
 
 This is a hobby project on how to make an iOS remote control for the Navico TP5000 autopilot
-based on https://github.com/larsjessen/autopilot project.
+based on https://github.com/larsjessen/autopilot project, upgraded to Swift 5 using Xcode 12
+as per these instructions 
+
+https://developer.apple.com/forums/thread/685565?answerId=682858022#682858022
 
 
 <img src="media/app_and_autohelm800.JPG" alt="App and Autohelm 800" width="500"/>
