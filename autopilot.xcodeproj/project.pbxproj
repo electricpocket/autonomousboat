@@ -394,7 +394,7 @@
 				DEVELOPMENT_TEAM = U7P49DSC6K;
 				INFOPLIST_FILE = autopilot/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "larsjessen.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.pocketmariner.autopilot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "autopilot/autopilot-Bridging-Header.h";
@@ -412,7 +412,7 @@
 				DEVELOPMENT_TEAM = U7P49DSC6K;
 				INFOPLIST_FILE = autopilot/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "larsjessen.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.pocketmariner.autopilot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "autopilot/autopilot-Bridging-Header.h";
