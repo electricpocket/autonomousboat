@@ -5,7 +5,6 @@ based on https://github.com/larsjessen/autopilot project, upgraded to Swift 5 us
 as per these instructions 
 
 https://developer.apple.com/forums/thread/685565?answerId=682858022#682858022
-![AB5469EE-CDEF-4018-8528-DCD017271E1E_1_105_c]
 
 
 <img src="https://user-images.githubusercontent.com/463068/140337885-da3f190a-4a87-4f6d-9f18-b0aabbac31da.jpeg" alt="App and TP5000" width="500"/>
