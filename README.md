@@ -1,75 +1,41 @@
-# iOS remote for Navico TP5000
+# Bluetooth iOS remote for Navico TP5000
 
-This is a hobby project on how to make an iOS remote control for the Navico TP5000 autopilot
-based on https://github.com/larsjessen/autopilot project, upgraded to Swift 5 using Xcode 12
-as per these instructions 
+This project is for an iOS Bluetooth remote control for the Navico TP5000 autopilot
 
-https://developer.apple.com/forums/thread/685565?answerId=682858022#682858022
+<img src="https://user-images.githubusercontent.com/463068/140337885-da3f190a-4a87-4f6d-9f18-b0aabbac31da.jpeg" alt="App and TP5000" width="500"/>
 
+[Video of the app in action](https://youtu.be/SloeDqlF8rE)
 
-<img src="media/app_and_autohelm800.JPG" alt="App and Autohelm 800" width="500"/>
+## Design
+The basic idea was to mount a bluetooth module inside the Navico TP5000 that would communicate with an iPhone iOS app which could send instructions via Bluetooth LE to the TP5000 to turn to port or starboard.
 
-[Video of the app in action](https://vimeo.com/175227393)
+Attempts to talk to and control the TP5000 over NMEA0183 via the yellow/green NMEA wires on the power lead failed, so instead we went for the other obvious but less elegant solution of simulating the three button presses, port, starboard and Auto, on the TP5000 with relays.
 
-## Electronics
+### Components
+- 1 x Arduino Nano33 BLE https://www.arduino.cc/en/Guide/NANO33BLE
+- 3 x 3-5V NOReed Relays -  D31A3100 SPST NO relay 500ohms coil resistance =>  10mA switching current at 5V https://uk.rs-online.com/web/p/reed-relays/1782703/
+- 1 Relay driver board - 3 Channel 3.3V/5V 10A Relay Module for Arduino RPi ESP8266 + Optocoupler https://www.ebay.co.uk/itm/272607156352
+- 1 5V regulator 78L05 - https://www.ebay.co.uk/itm/121681683380
 
-Attempts to talk to the TP5000 over NMEA with wind data ( WMV) failed.
+## Development
+### Software
+#### Arduino app
+We used the latest Arduino IDE 1.8.16 for the project (not that it should matter which version you use) and used this getting started guide to help:-
 
-So instead I went for the other obvious (and less elegant) solution - simulating button presses with relays.
+https://www.arduino.cc/en/Guide/NANO33BLE
 
-Below is a picture of the final board. Luckily there is quite a lot of space beside the main pcb in the Autohelm, and it even has an unused screw hole for mounting.
+We wrote a simple Ardiuno app ( code in this project ) to control the relays via 3 digital output pins (D2,D3 & D4; physical pins 5,6 & 7) from the Arduino and an analogueinput pin (A0; pin 19)to monitor the Auto status light on the TP5000. 
 
-<img src="media/final_pcb.png" alt="Final PCB" width="500"/>
-
-### Bill of materials
-- 1 x [Blueduino Rev2](https://www.tindie.com/products/AprilBrother/blueduino-rev2-arduino-compatible-plus-ble/)
-- 5 x Reed Relay W117DIP-89
-
-### Diagrams and wiring
-
-There is five wires coming from the button panel PCB, and I colour coded these wires with Blue, Green, Yellow, Purple, and Orange as seen below
-
-<img src="media/button_panel_pcb.jpg" alt="Button Panel PCB" width="500"/>
-
-So shorting the following wires would create the following button presses
-- Blue + Purple = -1
-- Orange + Purple = +1
-- Yellow + Blue = -10
-- Yellow + Orange = +10
-- Green + Blue = Standby
-- Green + Orange = Auto
-
-Instead of soldering wires onto the button panel PCB, I found it easier to solder onto the main PCB mounted in the bottom part of the autopilot since this gives much shorter cable lengths and the cables are not in the way when you open the autopilot. So I mapped out where the 5 wires are connected on main Micro Controller on the main PCB below
-
-<img src="media/main_chip.jpg" alt="Main chip" width="500"/>
-
-I soldered the 5 wires onto the back of the main PCB. In addition I soldered a power (5V) and Ground cable on to pin 40 and pin 20, so I could power the Blueduino and the relays.
-
-The reed relays that I found has the following diagram.
-
-<img src="media/relay.jpg" alt="Reed relay"  width="200"/>
-
-So again following the colour codes I made the following pcb layout.
-
-<img src="media/pcb_layout.jpg" alt="PCB layout" width="500"/>
-
-For reference I included the Blueduino Rev2 pin diagram below.
-
-<img src="media/blueduino_rev2.jpg" alt="Blueduino Rev2 pin out"  width="500"/>
-
-## Blueduino
-
-The blueduino combines Arduino with a CC2540 BLE module.
-
-Note that you have to choose "LilyPad USB" to download the sketch to the board.
-
-More documentation can be found here
-* https://www.tindie.com/products/AprilBrother/blueduino-rev2-arduino-compatible-plus-ble/
-* http://wiki.aprbrother.com/wiki/BlueDuino_rev2
-
-I used the Arduino IDE 1.6.5 for the project (not that it should matter which version you use).
-
-## iOS app
-
+#### iOS app
+We then wrote an iOS app to send commands via Bluetooth to the Nano 
 based the code largely on [this example](https://www.raywenderlich.com/85900/arduino-tutorial-integrating-bluetooth-le-ios-swift) from Ray Wenderlich.
-# autonomousboat
+
+## Hardware
+We used the 12V supply inside the TP5000 (from the back of the remote port socket) to power the Nano33 BLE ( the Nano can use anything from. 3.3 to 30V to power it!).
+We soldered the 3 relays to the back of the microswitches on the TP5000 switch and led board.
+
+We had chosen small reed relays with the highest drive impedance (hence lowest current -  10mA) we could find but unfortunately found the Nano33 could not drive the relays using 3.3V digital output pins directly so we had to add a relay driver board and a 5V regulator to drive them indirectly. We removed the large relays that came on the board and cut it in half ( at the line where the connection to the relay driver pins is) so that it would fit inside the TP5000. The output driver pins were wired to the relays on the back to the TP5000 controller board. The +3.3V regulated output from the Nano (pin 17) was still not powerful enough to drive the relays so we had to add a 5V supply. The 5V regulator was attached to the 12V power supply rather than try to find and attach to a 5V supply on the main TP5000 circuit board.
+
+Arduino Nano33 BLE 
+<img width="574" alt="Screenshot 2021-11-04 at 15 35 49" src="https://user-images.githubusercontent.com/463068/140360352-0740f7b8-dcc0-4869-835b-e54d204a1956.png">
+
